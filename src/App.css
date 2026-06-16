@@ -1,0 +1,161 @@
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+.container-principal{
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  /* border: 5px solid yellow; */
+}
+
+.ferestre-centru{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 100%;
+  /* border: 5px solid red; */
+}
+
+.fereastra-istoric-conv{
+  display: flex;
+  width: 20%;
+  height: 100%;
+  background-color: red;
+}
+
+.fereastra-pdf{
+  display: flex;
+  width: 100%;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1e1e1e;
+  border-bottom: 1px solid #2e2e2e;
+}
+
+.fereastra-chat{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 90%;
+}
+
+.chat{
+  overflow-y: auto;
+  overflow-x: hidden;
+  word-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 80%;
+  max-width: 100%;
+  background-color: #1f1f1f;
+  color: white;
+  scrollbar-width: none;
+}
+
+.user-message{
+  align-self: flex-end;
+  max-width: 77%;
+  width: fit-content;
+  background-color: #313131;
+  padding: 0.5rem;
+  margin-right: 0.3rem;
+  margin-top: 0.3rem;
+  border-radius: 7%;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.assistant-message{
+  align-self: flex-start;
+  padding: 1rem;
+  word-break: break-word;
+  background-color: #181818;
+  margin-right: 0.3rem;
+  margin-top: 0.5rem;
+  max-width: 100%;
+  border-radius: 7%;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.prompt{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 20%;
+  background-color: green;
+}
+
+.prompt-textarea{
+  flex: 9;
+  background-color: #1f1f1f;
+  color: white;
+  outline: none;
+}
+
+.prompt button{
+  flex: 1;
+  background-color: #181818;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.fereastra-pdf label{
+  background-color: #181818;
+  color: white;
+  padding: 1rem;
+}
+
+.fereastra-pdf span{
+  color: white;
+  font-size: 1.5rem;
+}
+
+.chat::-webkit-scrollbar {
+  display: none;
+}
+
+.fereastra-istoric-conv {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    height: 100%;
+    background-color: #181818;
+    border-right: 1px solid #2e2e2e;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+button, label{
+  background-color: #181818;
+  color: white;
+}
+
+.conv-item {
+    padding: 0.6rem;
+    cursor: pointer;
+    border-bottom: 1px solid #1f1f1f;
+    color: white;
+    font-size: 0.9rem;
+}
+
+.conv-item button{
+  background-color:#2e2e2e;
+  color: white;
+  font-size: 0.7rem;
+}
+
+.conv-data{
+  font-size: 0.8rem;
+}
+
+.conv-item:hover {
+    background-color: #181818;
+}
