@@ -6,7 +6,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
     import.meta.url
 ).toString()
 
-const useUploadPDF = (setContextPDF) => {
+const useUploadPDF = (setContextPDF, setMesaje) => {
 
     const [incarcarePDF, setIncarcarePDF] = useState(false)
 
@@ -16,26 +16,58 @@ const useUploadPDF = (setContextPDF) => {
 
         setIncarcarePDF(true)
         let textTotal = ""
+
         try {
             for (const f of selectedPDFS) {
                 console.log("PDF citit:", f.name)
-                const buf    = await f.arrayBuffer()
+
+                const buf = await f.arrayBuffer()
                 const fisier = await pdfjs.getDocument({ data: buf }).promise
 
                 for (let p = 1; p <= fisier.numPages; p++) {
-                    const paginaPDF   = await fisier.getPage(p)
+                    const paginaPDF = await fisier.getPage(p)
                     const continutPDF = await paginaPDF.getTextContent()
-                    textTotal += continutPDF.items.map(i => i.str).join(" ") + "\n"
+
+                    textTotal += continutPDF.items
+                        .map(i => i.str)
+                        .join(" ") + "\n"
                 }
             }
-            if (!textTotal.trim()) console.warn("PDF-urile nu contin text")
+
+            if (!textTotal.trim()) {
+                console.warn("PDF-urile nu contin text")
+            }
+
             setContextPDF(textTotal.slice(0, 8000))
-        } catch (err) { console.error("Eroare la upload PDF:", err)
-        } finally { 
-            setIncarcarePDF(false) 
+
+            const numePDF = selectedPDFS.map(f => f.name).join(", ")
+
+            setMesaje(prev => [
+                ...prev,
+                {
+                    role: "system-info",
+                    text: `Încărcat: ${numePDF}`
+                }
+            ])
+
+        } catch (err) {
+            console.error("Eroare la upload PDF:", err)
+
+            setMesaje(prev => [
+                ...prev,
+                {
+                    role: "system-info",
+                    text: "Eroare la încărcarea PDF-ului."
+                }
+            ])
+
+        } finally {
+            setIncarcarePDF(false)
             e.target.value = ""
         }
     }
+
     return { incarcarePDF, uploadPDF }
 }
+
 export default useUploadPDF

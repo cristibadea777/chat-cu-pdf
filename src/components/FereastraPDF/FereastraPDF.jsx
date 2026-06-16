@@ -1,8 +1,8 @@
 import useUploadPDF from "./useUploadPDF"
 
-const FereastraPDF = ({ setContextPDF }) => {
+const FereastraPDF = ({ setContextPDF, setMesaje }) => {
 
-    const { incarcarePDF, uploadPDF } = useUploadPDF(setContextPDF)
+    const { incarcarePDF, uploadPDF } = useUploadPDF(setContextPDF, setMesaje)
 
     return (
         <div className="fereastra-pdf">

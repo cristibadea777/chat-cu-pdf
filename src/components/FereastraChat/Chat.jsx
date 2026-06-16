@@ -1,31 +1,39 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react"
 
-const Chat = ({messages, loading}) => {
+const Chat = ({ messages, loading }) => {
 
-    //pt scroll dupa fiecare mesaj nou
     const scrollRef = useRef(null)
+
     useEffect(() => {
         if (scrollRef.current) {
             scrollRef.current.scrollTop = scrollRef.current.scrollHeight
         }
     }, [messages])
 
+    function clasaMesaj(msg) {
+        if (msg.role === "user") return "user-message"
+        if (msg.role === "system-info") return "system-info-message"
+        return "assistant-message"
+    }
+
     return (
         <div className="chat" ref={scrollRef}>
             {messages.map((msg, i) => (
-                <div 
+                <div
                     key={i}
-                    className={msg.role === "user" ? "user-message" : "assistant-message"}
+                    className={clasaMesaj(msg)}
                 >
                     {msg.text}
                 </div>
             ))}
+
             {loading && (
                 <div className="assistant-message">
                     Thinking...
                 </div>
             )}
         </div>
-    );
-};
-export default Chat;
+    )
+}
+
+export default Chat

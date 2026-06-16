@@ -159,3 +159,18 @@ button, label{
 .conv-item:hover {
     background-color: #181818;
 }
+
+.system-info-message {
+  align-self: flex-end;
+  color: cyan;
+  font-size: 0.85rem;
+  margin: 0.4rem 0.3rem 0.4rem auto;
+  padding: 0.35rem 0.7rem;
+  background: rgba(0, 217, 255, 0.08);
+  border: 0.05rem solid rgba(0, 217, 255, 0.25);
+  border-radius: 7%;
+  max-width: 77%;
+  width: fit-content;
+  word-break: break-word;
+  white-space: pre-wrap;
+}

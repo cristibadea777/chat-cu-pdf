@@ -38,8 +38,9 @@ function App() {
         istoricConversatii  = {istoricConversatii}
       />
       <div className="ferestre-centru">
-        <FereastraPDF 
-          setContextPDF = {setContextPDF}
+        <FereastraPDF
+            setContextPDF={setContextPDF}
+            setMesaje={setMesaje}
         />
         <FereastraChat 
           contextPDF      = {contextPDF}
